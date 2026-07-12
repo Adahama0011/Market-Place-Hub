@@ -1,25 +1,26 @@
-name: Build Marketplace Hub
+name: CI
+
+Controls when the workflow will run
 
 on:
-  push:
-    branches: [ "main" ]
-  pull_request:
-    branches: [ "main" ]
-  workflow_dispatch:
+
+Triggers the workflow on push or pull request events but only for the "Adahama" branch
+
+push:
+branches: [ "Adahama" ]
+pull_request:
+branches: [ "Adahama" ]
+
+Allows you to run this workflow manually from the Actions tab
+
+workflow_dispatch:
+
+A workflow run is made up of one or more jobs that can run sequentially or in parallel
 
 jobs:
-  build:
-    runs-on: ubuntu-latest
 
-    steps:
-      - uses: actions/checkout@v4
+This workflow contains a single job called "build"
 
-      - uses: actions/setup-node@v4
-        with:
-          node-version: 20
-
-      - name: Install dependencies
-        run: npm install
-
-      - name: Build project
-        run: npm run build
+build:
+# The type of runner that the job will run on
+runs-on: ubuntu-latest
